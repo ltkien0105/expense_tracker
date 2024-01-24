@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalLab</string>
+    <string name="transaction_history">Lịch sử giao dịch</string>
+    <string name="total_balance">Tổng tiền</string>
+    <string name="top_spending">Chi tiêu nhiều nhất</string>
+    <string name="income">Thu nhập</string>
+    <string name="expense">Chi tiêu</string>
+    <string name="see_all">Xem tất cả</string>
+
+    <!-- Content Description -->
+    <string name="sort">Sắp xếp</string>
+    <string name="more">Nhiều hơn</string>
+
+    <!-- Label -->
+    <string name="name">Tên</string>
+    <string name="label_icon">Icon</string>
+    <string name="label_type">Kiểu</string>
+    <string name="label_date">Ngày</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="clear">Xóa</string>
+    <string name="allowance">Tiền trợ cấp</string>
+    <string name="beauty">Sắc đẹp</string>
+    <string name="bill">Hóa đơn</string>
+    <string name="donation">Quyên góp</string>
+    <string name="education">Giáo dục</string>
+    <string name="family">Gia đình</string>
+    <string name="food">Thức ăn</string>
+    <string name="gift">Quà tặng</string>
+    <string name="groceries">Tạp hóa</string>
+    <string name="health">Sức khoẻ</string>
+    <string name="home">Nhà</string>
+    <string name="leisure">Giải trí</string>
+    <string name="other_expense">Chi tiêu khác</string>
+    <string name="other_income">Thu nhập khác</string>
+    <string name="pets">Thú cưng</string>
+    <string name="salary">Tiền lương</string>
+    <string name="transport">Di chuyển</string>
+    <string name="travel">Du lịch</string>
+    <string name="week">Tuần</string>
+    <string name="month">Tháng</string>
+    <string name="year">Năm</string>
+    <string name="mon">Thứ 2</string>
+    <string name="tue">Thứ 3</string>
+    <string name="wed">Thứ 4</string>
+    <string name="thu">Thứ 5</string>
+    <string name="fri">Thứ 6</string>
+    <string name="sat">Thứ 7</string>
+    <string name="sun">CN</string>
+    <string name="good_afternoon">Chào buổi chiều,</string>
+    <string name="name_of_user">%s</string>
+    <string name="notification">Thông báo</string>
+    <string name="statistic">Thống kê</string>
+    <string name="budget">Ngân sách</string>
+    <string name="transaction">Giao dịch</string>
+    <string name="add_edit_transaction">Thêm/ sửa giao dịch</string>
+    <string name="settings">Cài đặt</string>
+    <string name="download">Tải xuống</string>
+    <string name="empty_budget">Bạn không có ngân saách</string>
+    <string name="amount_spend">Số tiền có thể dùng</string>
+    <string name="total_budgets">Tổng ngân sách</string>
+    <string name="total_spent">Tổng đã dùng</string>
+    <string name="end_of_month">Cuối %s</string>
+    <string name="create_a_budget">Tạo ngân sách</string>
+    <string name="total">Tổng: %1$s</string>
+    <string name="left">Còn lại: %1$s</string>
+    <string name="added_successfully_notification">%s được thêm thành công</string>
+    <string name="updated_successfully_notification">%s được cập nhật thành công</string>
+    <string name="add_edit_budget">Thêm/ sửa ngân sách</string>
+    <string name="category">Thể loại</string>
+    <string name="amount">Số tiền</string>
+    <string name="time_range">Khoảng thời gian</string>
+    <string name="create">Tạo</string>
+    <string name="cancel">Hủy</string>
+    <string name="update">Cập nhật</string>
+</resources>
