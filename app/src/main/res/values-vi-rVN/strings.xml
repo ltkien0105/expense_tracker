@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FinalLab</string>
+    <string name="app_name">ExpenseTracker</string>
     <string name="transaction_history">Lịch sử giao dịch</string>
     <string name="total_balance">Tổng tiền</string>
     <string name="top_spending">Chi tiêu nhiều nhất</string>

@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.finallab"
+    namespace = "com.example.expense_tracker"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.finallab"
+        applicationId = "com.example.expense_tracker"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
@@ -66,14 +66,15 @@ dependencies {
     //Room
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
-
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(libs.room.ktx)
+    implementation(libs.room.ktx) // Kotlin Extensions and Coroutines support for Room
 
     //Dagger-Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+
+    //Preferences Datastore
+    implementation(libs.datastore.preferences)
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
