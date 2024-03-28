@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
@@ -28,10 +29,17 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            val isDarkTheme = mainViewModel.isDarkMode.collectAsState(initial = false)
+            val themeStyle = mainViewModel.themeStyle.collectAsState(initial = false)
+
+            val isDarkTheme = when (themeStyle.value) {
+                ThemeType.SYSTEM.toString() -> isSystemInDarkTheme()
+                ThemeType.LIGHT.toString() -> false
+                ThemeType.DARK.toString() -> true
+                else -> isSystemInDarkTheme()
+            }
 
             ExpenseTrackerTheme(
-                darkTheme = isDarkTheme.value
+                darkTheme = isDarkTheme
             ) {
                 // A surface container using the 'background' color from the theme
                 Surface(

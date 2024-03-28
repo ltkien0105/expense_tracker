@@ -18,6 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.expense_tracker.presentation.navgraph.bottomNavigationScreen
 import com.example.expense_tracker.ui.theme.DarkGreen
+import com.example.expense_tracker.ui.theme.ReplacementTheme
 
 @Composable
 fun BottomNavigationBar(
@@ -27,7 +28,7 @@ fun BottomNavigationBar(
     val currentRoute = navBackStackEntry?.destination?.route
 
     NavigationBar(
-        containerColor = Color.White,
+        containerColor = ReplacementTheme.colorScheme.bottomNavigationBackground,
         tonalElevation = 10.dp,
         modifier = Modifier.shadow(20.dp)
     ) {
@@ -36,8 +37,13 @@ fun BottomNavigationBar(
             NavigationBarItem(
                 selected = isSelected,
                 onClick = {
-                    if (isSelected) return@NavigationBarItem
-                    navHostController.navigate(it.route)
+                    navHostController.navigate(it.route) {
+                        popUpTo(navHostController.graph.startDestinationRoute!!) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 },
                 icon = { 
                     Icon(
@@ -52,7 +58,7 @@ fun BottomNavigationBar(
                     ) 
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color.White
+                    indicatorColor = ReplacementTheme.colorScheme.bottomNavigationBackground
                 )
             )
         }

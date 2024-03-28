@@ -23,6 +23,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -68,11 +69,18 @@ fun StatisticScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(ReplacementTheme.colorScheme.background)
     ) {
         SecondaryTabRow(
             selectedTabIndex = statisticState.tabSelected,
-            containerColor = Color.White,
+            containerColor = ReplacementTheme.colorScheme.background,
+            contentColor = ReplacementTheme.colorScheme.onBackground,
+            indicator =  @Composable {
+                TabRowDefaults.SecondaryIndicator(
+                    Modifier.tabIndicatorOffset(statisticState.tabSelected, matchContentSize = false),
+                    color = Color(0xFF8b75bd)
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth()
         ) {
@@ -150,7 +158,7 @@ fun StatisticScreen(
                     Text(
                         text = stringResource(id = R.string.top_spending),
                         style = ReplacementTheme.typography.titleMedium.copy(
-                            color = Color.Black
+                            color = ReplacementTheme.colorScheme.onBackground
                         )
                     )
                     IconButton(

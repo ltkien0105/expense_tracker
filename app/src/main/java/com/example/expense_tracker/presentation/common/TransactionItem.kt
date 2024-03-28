@@ -78,13 +78,13 @@ fun TransactionItem(
                 Text(
                     transactionEntity.title,
                     style = ReplacementTheme.typography.bodyLarge.copy(
-                        color = Color.Black
+                        color = ReplacementTheme.colorScheme.onBackground
                     )
                 )
                 Text(
                     dateFormatted,
                     style = ReplacementTheme.typography.bodyMedium.copy(
-                        color = Gray
+                        color = ReplacementTheme.colorScheme.onBackground
                     )
                 )
             }
@@ -93,7 +93,10 @@ fun TransactionItem(
             text = textValue,
             style = ReplacementTheme.typography.bodySuperLarge.copy(
                 fontSize = 18.sp,
-                color = if (isIncome) LightGreen else Red
+                color = if (isIncome)
+                            ReplacementTheme.colorScheme.incomeLabel
+                        else
+                            ReplacementTheme.colorScheme.expenseLabel
             )
         )
     }

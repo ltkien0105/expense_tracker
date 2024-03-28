@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
 
-    val isDarkMode = userPreferencesRepository.isDarkMode.map { it ?: false }
+    val themeStyle = userPreferencesRepository.themeStyle.map { it ?: ThemeType.SYSTEM.toString() }
 
     init {
         viewModelScope.launch {
@@ -29,9 +29,15 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun toggleTheme(toggle: Boolean) {
+    fun changeTheme(theme: ThemeType) {
         viewModelScope.launch {
-            userPreferencesRepository.saveDarkModePreference(toggle)
+            userPreferencesRepository.saveThemeStylePreference(theme)
         }
     }
+}
+
+enum class ThemeType {
+    SYSTEM,
+    LIGHT,
+    DARK
 }

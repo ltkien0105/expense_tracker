@@ -21,16 +21,17 @@ import com.example.expense_tracker.ui.theme.ReplacementTheme
 
 @Composable
 fun SettingsItem(
+    modifier: Modifier = Modifier,
     @DrawableRes icon: Int = R.drawable.ic_theme,
     title: String = "Dark Mode",
     contentDescription: String = "Theme Icon",
     isChecked: Boolean = false,
-    onCheckedChange: ((Boolean) -> Unit)? = null
+    onCheckedChange: ((Boolean) -> Unit)? = null,
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -39,12 +40,14 @@ fun SettingsItem(
         ) {
             Icon(
                 painter = painterResource(id = icon),
-                contentDescription = contentDescription
+                contentDescription = contentDescription,
+                tint = ReplacementTheme.colorScheme.onBackground
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = title,
-                style = ReplacementTheme.typography.labelMedium
+                style = ReplacementTheme.typography.labelMedium,
+                color = ReplacementTheme.colorScheme.onBackground
             )
         }
         if (onCheckedChange != null)

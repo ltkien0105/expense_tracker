@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.expense_tracker.R
 import com.example.expense_tracker.presentation.navgraph.Route
-import com.example.expense_tracker.ui.theme.AppBarColor
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 import com.example.expense_tracker.ui.theme.WhiteAlpha6
 
@@ -41,7 +40,8 @@ fun CenteredAppBar(
         title = {
             Text(
                 title,
-                style = ReplacementTheme.typography.titleMedium
+                style = ReplacementTheme.typography.titleMedium,
+                color = ReplacementTheme.colorScheme.onBackground
             )
         },
         actions = {
@@ -78,8 +78,8 @@ fun CenteredAppBar(
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = if (currentScreen == Route.BottomNavigationScreen.Statistic.route) Color.White else AppBarColor,
-            titleContentColor = if (currentScreen == Route.BottomNavigationScreen.Statistic.route) Color.Black else Color.White
+            containerColor = ReplacementTheme.colorScheme.appBar,
+            titleContentColor = ReplacementTheme.colorScheme.onAppBar
         ),
     )
 }

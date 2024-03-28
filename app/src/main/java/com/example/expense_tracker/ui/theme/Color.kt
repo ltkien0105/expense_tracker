@@ -28,6 +28,12 @@ data class ReplacementColorScheme(
     val onPrimary: Color,
     val background: Color,
     val onBackground: Color,
+    val bottomNavigationBackground: Color,
+    val incomeLabel: Color,
+    val expenseLabel: Color,
+    val appBar: Color = AppBarColor,
+    val onAppBar: Color = Color.White,
+    val indicatorTab: Color,
 )
 
 val LocalReplacementColor = staticCompositionLocalOf {
@@ -36,5 +42,9 @@ val LocalReplacementColor = staticCompositionLocalOf {
         onPrimary = Color.Unspecified,
         background = Color.Unspecified,
         onBackground = Color.Unspecified,
+        bottomNavigationBackground = Color.Unspecified,
+        incomeLabel = Color.Unspecified,
+        expenseLabel = Color.Unspecified,
+        indicatorTab = Color.Unspecified,
     )
 }

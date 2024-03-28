@@ -5,7 +5,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
@@ -15,14 +14,22 @@ private val DarkColorScheme = ReplacementColorScheme(
     primary = Color(0xFF73bab5),
     onPrimary = Color.White,
     background = Color(0xFF121212),
-    onBackground = Color.White
+    onBackground = Color.White,
+    bottomNavigationBackground = Color(0xFF393636),
+    incomeLabel = Color(0xFF40F69F),
+    expenseLabel = Color(0xFFfcb0ab),
+    indicatorTab = Color(0xFF8b75bd)
 )
 
 private val LightColorScheme = ReplacementColorScheme(
     primary = DarkGreen,
     onPrimary = Color.White,
     background = Color.White,
-    onBackground = Color.Black
+    onBackground = Color.Black,
+    bottomNavigationBackground = Color.White,
+    incomeLabel = LightGreen,
+    expenseLabel = Red,
+    indicatorTab = Color(0xFF654c9e)
 )
 
 @Composable

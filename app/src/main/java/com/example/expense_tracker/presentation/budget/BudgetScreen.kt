@@ -69,7 +69,7 @@ fun BudgetScreen(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = DarkGreen)
+            .background(color = ReplacementTheme.colorScheme.primary)
     ) {
         if (budgetState.budgetList.isEmpty()) {
             Text(
