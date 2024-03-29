@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.example.expense_tracker.R
 import com.example.expense_tracker.domain.model.CategoriesItem
 import com.example.expense_tracker.ui.theme.Gray
+import com.example.expense_tracker.ui.theme.ReplacementTheme
 import kotlin.math.min
 
 @Composable
@@ -35,9 +36,10 @@ fun InformationBudgetCard(
     leftBudget: Double,
     modifier: Modifier = Modifier
 ) {
+    val lineColor = ReplacementTheme.colorScheme.onBackground
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
+            containerColor = ReplacementTheme.colorScheme.background,
         ),
         shape = RoundedCornerShape(16.dp),
         modifier = modifier
@@ -62,13 +64,22 @@ fun InformationBudgetCard(
                         contentDescription = stringResource(id = categoryItem.category),
                         tint = Color.Unspecified
                     )
-                    Text(text = stringResource(id = categoryItem.category))
+                    Text(
+                        text = stringResource(id = categoryItem.category),
+                        color = ReplacementTheme.colorScheme.onBackground
+                    )
                 }
                 Column(
                     horizontalAlignment = Alignment.End,
                 ) {
-                    Text(text = stringResource(R.string.total, totalBudget))
-                    Text(text = stringResource(R.string.left, leftBudget))
+                    Text(
+                        text = stringResource(R.string.total, totalBudget),
+                        color = ReplacementTheme.colorScheme.onBackground
+                    )
+                    Text(
+                        text = stringResource(R.string.left, leftBudget),
+                        color = ReplacementTheme.colorScheme.onBackground
+                    )
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -78,7 +89,7 @@ fun InformationBudgetCard(
                     .height(5.dp)
             ) {
                 drawLine(
-                    color = Gray,
+                    color = lineColor,
                     start = Offset.Zero,
                     end = Offset(size.width, 0f),
                     strokeWidth = 10f,

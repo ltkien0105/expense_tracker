@@ -3,14 +3,6 @@ package com.example.expense_tracker.ui.theme
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
-
 //External color
 val WhiteAlpha6 = Color(0x0FFFFFFF)
 val WhiteAlpha15 = Color(0x0FFFFFFF)
@@ -34,6 +26,7 @@ data class ReplacementColorScheme(
     val appBar: Color = AppBarColor,
     val onAppBar: Color = Color.White,
     val indicatorTab: Color,
+    val lineBudget: Color,
 )
 
 val LocalReplacementColor = staticCompositionLocalOf {
@@ -46,5 +39,6 @@ val LocalReplacementColor = staticCompositionLocalOf {
         incomeLabel = Color.Unspecified,
         expenseLabel = Color.Unspecified,
         indicatorTab = Color.Unspecified,
+        lineBudget = Color.Unspecified
     )
 }

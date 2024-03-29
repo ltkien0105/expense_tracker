@@ -18,7 +18,8 @@ private val DarkColorScheme = ReplacementColorScheme(
     bottomNavigationBackground = Color(0xFF393636),
     incomeLabel = Color(0xFF40F69F),
     expenseLabel = Color(0xFFfcb0ab),
-    indicatorTab = Color(0xFF8b75bd)
+    indicatorTab = Color(0xFF8b75bd),
+    lineBudget = Color.White
 )
 
 private val LightColorScheme = ReplacementColorScheme(
@@ -29,7 +30,8 @@ private val LightColorScheme = ReplacementColorScheme(
     bottomNavigationBackground = Color.White,
     incomeLabel = LightGreen,
     expenseLabel = Red,
-    indicatorTab = Color(0xFF654c9e)
+    indicatorTab = Color(0xFF654c9e),
+    lineBudget = Gray
 )
 
 @Composable

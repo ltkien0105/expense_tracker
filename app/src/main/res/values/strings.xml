@@ -52,7 +52,7 @@
     <string name="statistic">Statistic</string>
     <string name="budget">Budget</string>
     <string name="transaction">Transaction</string>
-    <string name="add_edit_transaction">Add/ Edit transaction</string>
+    <string name="add_edit_transaction">Add/ Edit transaction</string>\
     <string name="settings">Settings</string>
     <string name="download">Download</string>
     <string name="empty_budget">You have no budget</string>

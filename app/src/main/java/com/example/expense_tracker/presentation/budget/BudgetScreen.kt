@@ -51,7 +51,6 @@ import com.example.expense_tracker.presentation.budget.components.InfoBudget
 import com.example.expense_tracker.presentation.budget.components.InformationBudgetCard
 import com.example.expense_tracker.presentation.budget.components.drawBudgetArc
 import com.example.expense_tracker.presentation.navgraph.Route
-import com.example.expense_tracker.ui.theme.DarkGreen
 import com.example.expense_tracker.ui.theme.Gray
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 
@@ -80,7 +79,9 @@ fun BudgetScreen(
                 )
             )
             Spacer(modifier = Modifier.height(8.dp))
-            CreateBudgetButton { /*TODO*/ }
+            CreateBudgetButton {
+                navHostController.navigate(Route.AddEditBudgetScreen.getRoute(0))
+            }
         } else {
             val canvasSize = 250.dp
             val boxHeight = canvasSize + 32.dp
@@ -101,7 +102,7 @@ fun BudgetScreen(
                         shape = RoundedCornerShape(16.dp),
                         elevation = 1.dp
                     )
-                    .background(Color.White)
+                    .background(ReplacementTheme.colorScheme.background)
                     .fillMaxWidth()
                     .height(boxHeight)
                     .padding(start = 16.dp, end = 16.dp)
@@ -156,7 +157,9 @@ fun BudgetScreen(
                     ) {
                         Text(
                             stringResource(R.string.amount_spend),
-                            style = ReplacementTheme.typography.labelSmall
+                            style = ReplacementTheme.typography.labelSmall.copy(
+                                color = ReplacementTheme.colorScheme.onBackground
+                            )
                         )
                         Text(
                             budgetState.totalBudget.minus(budgetState.totalSpent).toString(),

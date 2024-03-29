@@ -21,12 +21,16 @@ fun InfoBudget(
         Text(
             amount.toString(),
             textAlign = TextAlign.Center,
-            style = ReplacementTheme.typography.bodyLarge
+            style = ReplacementTheme.typography.bodyLarge.copy(
+                color = ReplacementTheme.colorScheme.onBackground
+            )
         )
         Text(
             title,
             textAlign = TextAlign.Center,
-            style = ReplacementTheme.typography.labelSmall
+            style = ReplacementTheme.typography.labelSmall.copy(
+                color = ReplacementTheme.colorScheme.onBackground
+            )
         )
     }
 }

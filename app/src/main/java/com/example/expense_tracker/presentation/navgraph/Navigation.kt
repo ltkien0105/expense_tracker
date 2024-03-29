@@ -11,10 +11,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.navigation
 import com.example.expense_tracker.presentation.add_edit_budget.AddEditBudgetScreen
 import com.example.expense_tracker.presentation.add_edit_transaction.AddEditTransactionScreen
 import com.example.expense_tracker.presentation.budget.BudgetScreen
-import com.example.expense_tracker.presentation.home.HomeScreen
 import com.example.expense_tracker.presentation.settings.SettingsScreen
 import com.example.expense_tracker.presentation.statistic.StatisticScreen
 
@@ -33,47 +33,54 @@ fun Navigation(
             bottom = paddingValues.calculateBottomPadding()
         )
     ) {
-        composable(Route.BottomNavigationScreen.Home.route) {
-            HomeScreen(navHostController = navHostController)
+        navigation(
+            route = Route.BottomNavigationScreen.Home.route,
+            startDestination = Route.BottomNavigationScreen.Home.route
+        ) {
+            composable(
+                Route.AddEditTransactionScreen.route,
+                arguments = listOf(
+                    navArgument("id") {
+                        defaultValue = 0
+                    }
+                )
+            ) {
+                val id = it.arguments?.getInt("id") ?: 0
+                AddEditTransactionScreen(
+                    snackbarHostState = snackbarHostState,
+                    id = id
+                )
+            }
         }
         composable(Route.BottomNavigationScreen.Statistic.route) {
             StatisticScreen(navHostController = navHostController)
         }
-        composable(Route.BottomNavigationScreen.Budget.route) {
-            BudgetScreen(
-                navHostController = navHostController
-            )
+        navigation(
+            route = Route.BottomNavigationScreen.Budget.route,
+            startDestination = Route.BottomNavigationScreen.Budget.route
+        ) {
+            composable(Route.BottomNavigationScreen.Budget.route) {
+                BudgetScreen(
+                    navHostController = navHostController
+                )
+            }
+            composable(
+                Route.AddEditBudgetScreen.route,
+                arguments = listOf(
+                    navArgument("id") {
+                        defaultValue = 0
+                    }
+                )
+            ) {
+                val id = it.arguments?.getInt("id") ?: 0
+                AddEditBudgetScreen(
+                    snackbarHostState = snackbarHostState,
+                    id = id
+                )
+            }
         }
         composable(Route.BottomNavigationScreen.Settings.route) {
             SettingsScreen()
-        }
-        composable(
-            Route.AddEditTransactionScreen.route,
-            arguments = listOf(
-                navArgument("id") {
-                    defaultValue = 0
-                }
-            )
-        ) {
-            val id = it.arguments?.getInt("id") ?: 0
-            AddEditTransactionScreen(
-                snackbarHostState = snackbarHostState,
-                id = id
-            )
-        }
-        composable(
-            Route.AddEditBudgetScreen.route,
-            arguments = listOf(
-                navArgument("id") {
-                    defaultValue = 0
-                }
-            )
-        ) {
-            val id = it.arguments?.getInt("id") ?: 0
-            AddEditBudgetScreen(
-                snackbarHostState = snackbarHostState,
-                id = id
-            )
         }
     }
 }

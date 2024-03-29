@@ -33,6 +33,7 @@ fun CenteredAppBar(
         Route.BottomNavigationScreen.Statistic.route -> stringResource(R.string.statistic)
         Route.BottomNavigationScreen.Budget.route -> stringResource(R.string.budget)
         Route.AddEditTransactionScreen.route -> stringResource(R.string.add_edit_transaction)
+        Route.AddEditBudgetScreen.route -> stringResource(R.string.add_edit_budget)
         else -> stringResource(R.string.settings)
     }
 
