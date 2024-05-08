@@ -65,6 +65,7 @@ dependencies {
 
     //Room
     implementation(libs.room.runtime)
+    implementation(libs.appCompat)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx) // Kotlin Extensions and Coroutines support for Room
 

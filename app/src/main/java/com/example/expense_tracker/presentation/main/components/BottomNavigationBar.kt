@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,7 +16,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.expense_tracker.presentation.navgraph.bottomNavigationScreen
-import com.example.expense_tracker.ui.theme.DarkGreen
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 
 @Composable
@@ -45,17 +43,19 @@ fun BottomNavigationBar(
                         restoreState = true
                     }
                 },
-                icon = { 
+                icon = {
                     Icon(
                         painter = painterResource(
                             id = if (isSelected)
-                                    it.selectedIcon
-                                else it.unselectedIcon
+                                it.selectedIcon
+                            else it.unselectedIcon
                         ),
                         contentDescription = null,
                         modifier = Modifier.size(40.dp),
-                        tint = if (isSelected) DarkGreen else Color.Black
-                    ) 
+                        tint = if (isSelected)
+                            ReplacementTheme.colorScheme.onBottomNavigationBackgroundFilled
+                        else ReplacementTheme.colorScheme.onBottomNavigationBackground
+                    )
                 },
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = ReplacementTheme.colorScheme.bottomNavigationBackground

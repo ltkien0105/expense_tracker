@@ -191,7 +191,7 @@ fun AddEditBudgetScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
                         onClick = {
-//                            addEditBudgetViewModel.onEvent(AddEditBudgetEvent.SaveBudget)
+                            addEditBudgetViewModel.onEvent(AddEditBudgetEvent.SaveBudget)
                         },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = DarkGreen
@@ -205,6 +205,7 @@ fun AddEditBudgetScreen(
         }
     }
 }
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview

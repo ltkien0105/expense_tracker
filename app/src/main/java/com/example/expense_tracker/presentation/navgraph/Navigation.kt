@@ -15,6 +15,7 @@ import androidx.navigation.navigation
 import com.example.expense_tracker.presentation.add_edit_budget.AddEditBudgetScreen
 import com.example.expense_tracker.presentation.add_edit_transaction.AddEditTransactionScreen
 import com.example.expense_tracker.presentation.budget.BudgetScreen
+import com.example.expense_tracker.presentation.home.HomeScreen
 import com.example.expense_tracker.presentation.settings.SettingsScreen
 import com.example.expense_tracker.presentation.statistic.StatisticScreen
 
@@ -33,30 +34,35 @@ fun Navigation(
             bottom = paddingValues.calculateBottomPadding()
         )
     ) {
-        navigation(
-            route = Route.BottomNavigationScreen.Home.route,
-            startDestination = Route.BottomNavigationScreen.Home.route
+        composable(
+            Route.BottomNavigationScreen.Home.route
         ) {
-            composable(
-                Route.AddEditTransactionScreen.route,
-                arguments = listOf(
-                    navArgument("id") {
-                        defaultValue = 0
-                    }
-                )
-            ) {
-                val id = it.arguments?.getInt("id") ?: 0
-                AddEditTransactionScreen(
-                    snackbarHostState = snackbarHostState,
-                    id = id
-                )
-            }
+            HomeScreen(
+                navHostController = navHostController
+            )
         }
+
+        composable(
+            Route.AddEditTransactionScreen.route,
+            arguments = listOf(
+                navArgument("id") {
+                    defaultValue = 0
+                }
+            )
+        ) {
+            val id = it.arguments?.getInt("id") ?: 0
+            AddEditTransactionScreen(
+                snackbarHostState = snackbarHostState,
+                id = id
+            )
+        }
+
         composable(Route.BottomNavigationScreen.Statistic.route) {
             StatisticScreen(navHostController = navHostController)
         }
+
         navigation(
-            route = Route.BottomNavigationScreen.Budget.route,
+            route = "budget_route",
             startDestination = Route.BottomNavigationScreen.Budget.route
         ) {
             composable(Route.BottomNavigationScreen.Budget.route) {

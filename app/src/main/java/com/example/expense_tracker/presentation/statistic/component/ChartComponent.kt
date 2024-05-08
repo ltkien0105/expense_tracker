@@ -4,12 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.expense_tracker.R
 import com.example.expense_tracker.presentation.statistic.StatisticState
 import com.example.expense_tracker.presentation.statistic.chart_custom.rememberMarker
-import com.example.expense_tracker.ui.theme.DarkGreen
+import com.example.expense_tracker.ui.theme.ReplacementTheme
+import com.patrykandpatrick.vico.compose.axis.axisLabelComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
@@ -40,10 +42,9 @@ fun ChartComponent(
         entryModelOf(*statisticState.chartData.toTypedArray())
     }
 
-    val bottomAxis = AxisValueFormatter<AxisPosition.Horizontal.Bottom> {
-            value, _ ->
-        when(statisticState.rangeSelected) {
-            0 -> when(value) {
+    val bottomAxis = AxisValueFormatter<AxisPosition.Horizontal.Bottom> { value, _ ->
+        when (statisticState.rangeSelected) {
+            0 -> when (value) {
                 0f -> context.getString(R.string.mon)
                 1f -> context.getString(R.string.tue)
                 2f -> context.getString(R.string.wed)
@@ -52,6 +53,7 @@ fun ChartComponent(
                 5f -> context.getString(R.string.sat)
                 else -> context.getString(R.string.sun)
             }
+
             else -> (value + 1).toInt().toString()
         }
     }
@@ -63,11 +65,11 @@ fun ChartComponent(
                 spacing = if (statisticState.rangeSelected == 1) 10f.dp else 5f.dp,
                 lines = listOf(
                     LineChart.LineSpec(
-                        lineColor = 0xFF438883.toInt(),
+                        lineColor = ReplacementTheme.colorScheme.primary.toArgb(),
                         lineBackgroundShader = DynamicShaders.fromBrush(
                             Brush.verticalGradient(
                                 listOf(
-                                    DarkGreen.copy(
+                                    ReplacementTheme.colorScheme.primary.copy(
                                         alpha = 0.5f
                                     ),
                                     Color.Transparent
@@ -79,10 +81,16 @@ fun ChartComponent(
             ),
             model = chartEntryModel,
             startAxis = rememberStartAxis(
+                label = axisLabelComponent(
+                    color = ReplacementTheme.colorScheme.onBackground
+                ),
                 guideline = null,
                 tickLength = 0.dp
             ),
             bottomAxis = rememberBottomAxis(
+                label = axisLabelComponent(
+                    color = ReplacementTheme.colorScheme.onBackground
+                ),
                 guideline = null,
                 valueFormatter = bottomAxis,
                 tickLength = 0.dp,
@@ -100,7 +108,7 @@ fun ChartComponent(
             horizontalLayout = HorizontalLayout.fullWidth(
                 scalableEndPadding = 2.dp,
                 scalableStartPadding = 2.dp
-            )
+            ),
         )
     }
 }

@@ -36,14 +36,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.expense_tracker.R
+import com.example.expense_tracker.data.local.transaction.TransactionType
 import com.example.expense_tracker.domain.model.CategoriesItem
 import com.example.expense_tracker.domain.model.DropdownItem
-import com.example.expense_tracker.data.local.transaction.TransactionType
 import com.example.expense_tracker.presentation.add_edit_transaction.component.DatePickerComponent
+import com.example.expense_tracker.presentation.common.BackgroundScreen
 import com.example.expense_tracker.presentation.common.DropdownItemContainer
 import com.example.expense_tracker.presentation.common.DropdownMenuContainer
 import com.example.expense_tracker.presentation.common.LabelAndTextField
-import com.example.expense_tracker.presentation.common.BackgroundScreen
+import com.example.expense_tracker.presentation.main_activity.MainViewModel
 import com.example.expense_tracker.ui.theme.DarkGreen
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 import com.example.expense_tracker.utils.getFormattedDate
@@ -55,12 +56,13 @@ import kotlinx.coroutines.launch
 fun AddEditTransactionScreen(
     snackbarHostState: SnackbarHostState,
     id: Int = 0,
-    addEditTransactionViewModel: AddEditTransactionViewModel = hiltViewModel()
+    addEditTransactionViewModel: AddEditTransactionViewModel = hiltViewModel(),
+    mainViewModel: MainViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
     val addEditState by addEditTransactionViewModel.addEditState.collectAsState()
     val scope = rememberCoroutineScope()
-
+    val language by mainViewModel.language.collectAsState(initial = "en")
 
     LaunchedEffect(key1 = true) {
         if (id != 0) {
@@ -70,8 +72,7 @@ fun AddEditTransactionScreen(
         }
     }
 
-    val categoriesList = CategoriesItem.entries.filter {
-        categoryItem ->
+    val categoriesList = CategoriesItem.entries.filter { categoryItem ->
         if (addEditState.type.label == TransactionType.Income.name)
             categoryItem.type == TransactionType.Income
         else
@@ -103,19 +104,18 @@ fun AddEditTransactionScreen(
                     DropdownMenuContainer(
                         expandState = addEditState.isTypeDropdownExpanded,
                         valueState = addEditState.type,
-                        label = "Type",
+                        label = stringResource(R.string.type),
                         onExpandedChange = {
                             addEditTransactionViewModel.onEvent(
                                 AddEditTransactionEvent.SetTypeDropdownExpanded(it)
                             )
                         }
                     ) {
-                        TransactionType.entries.forEach {
-                            transactionType ->
+                        TransactionType.entries.forEach { transactionType ->
                             DropdownItemContainer(
                                 dropdownItem = DropdownItem(
                                     null,
-                                    transactionType.name
+                                    if (language == "en") transactionType.name else transactionType.viText
                                 )
                             ) {
                                 addEditTransactionViewModel.onEvent(
@@ -137,15 +137,14 @@ fun AddEditTransactionScreen(
                     DropdownMenuContainer(
                         expandState = addEditState.isCategoryDropdownExpanded,
                         valueState = addEditState.category,
-                        label = "Categories",
+                        label = stringResource(R.string.categories),
                         onExpandedChange = {
                             addEditTransactionViewModel.onEvent(
                                 AddEditTransactionEvent.SetCategoryDropdownExpanded(it)
                             )
                         }
                     ) {
-                        categoriesList.forEach {
-                            categoryItem ->
+                        categoriesList.forEach { categoryItem ->
                             DropdownItemContainer(
                                 dropdownItem = categoryItem.toDropDownItem(context)
                             ) {
@@ -164,7 +163,7 @@ fun AddEditTransactionScreen(
                     LabelAndTextField(
                         label = stringResource(id = R.string.amount),
                         value = addEditState.amount,
-                        prefixText = "$",
+                        prefixText = "VND",
                         trailingIcon = {
                             IconButton(
                                 onClick = {

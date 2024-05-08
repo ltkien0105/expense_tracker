@@ -24,10 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.expense_tracker.data.local.transaction.TransactionEntity
 import com.example.expense_tracker.data.local.transaction.TransactionType
-import com.example.expense_tracker.ui.theme.Gray
-import com.example.expense_tracker.ui.theme.LightGreen
 import com.example.expense_tracker.ui.theme.LightWhiteGreen
-import com.example.expense_tracker.ui.theme.Red
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 import com.example.expense_tracker.utils.getFormattedDate
 
@@ -42,9 +39,9 @@ fun TransactionItem(
     val dateFormatted = transactionEntity.date.getFormattedDate()
     val context = LocalContext.current
     val textValue = if (isIncome) {
-        "+ $ ${transactionEntity.amount}"
+        "+ VND ${transactionEntity.amount}"
     } else {
-        "- $ ${transactionEntity.amount}"
+        "- VND ${transactionEntity.amount}"
     }
 
 
@@ -94,9 +91,9 @@ fun TransactionItem(
             style = ReplacementTheme.typography.bodySuperLarge.copy(
                 fontSize = 18.sp,
                 color = if (isIncome)
-                            ReplacementTheme.colorScheme.incomeLabel
-                        else
-                            ReplacementTheme.colorScheme.expenseLabel
+                    ReplacementTheme.colorScheme.incomeLabel
+                else
+                    ReplacementTheme.colorScheme.expenseLabel
             )
         )
     }

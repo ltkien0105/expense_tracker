@@ -15,7 +15,7 @@ interface BudgetRepository {
 
     fun getTotalBudget(): Flow<Double>
 
-    fun getBudgetAndListExpensesTransaction(): Flow<List<BudgetWithTransactions>>
+    fun getBudgetAndListExpensesTransactionByMonth(): Flow<List<BudgetWithTransactions>>
 
     suspend fun insert(budgetEntity: BudgetEntity)
 

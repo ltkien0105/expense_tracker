@@ -42,7 +42,6 @@ fun CenteredAppBar(
             Text(
                 title,
                 style = ReplacementTheme.typography.titleMedium,
-                color = ReplacementTheme.colorScheme.onBackground
             )
         },
         actions = {
@@ -56,7 +55,6 @@ fun CenteredAppBar(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_download),
                             contentDescription = stringResource(R.string.download),
-                            tint = Color.Black,
                         )
                     }
                 else ->
@@ -73,14 +71,14 @@ fun CenteredAppBar(
                         Icon(
                             imageVector = Icons.Outlined.Notifications,
                             contentDescription = stringResource(id = R.string.notification),
-                            tint = Color.White,
                         )
                     }
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = ReplacementTheme.colorScheme.appBar,
-            titleContentColor = ReplacementTheme.colorScheme.onAppBar
+            titleContentColor = ReplacementTheme.colorScheme.onAppBar,
+            actionIconContentColor = ReplacementTheme.colorScheme.onAppBar,
         ),
     )
 }

@@ -56,7 +56,7 @@
     <string name="add_edit_transaction">Thêm/ sửa giao dịch</string>
     <string name="settings">Cài đặt</string>
     <string name="download">Tải xuống</string>
-    <string name="empty_budget">Bạn không có ngân saách</string>
+    <string name="empty_budget">Bạn không có ngân sách</string>
     <string name="amount_spend">Số tiền có thể dùng</string>
     <string name="total_budgets">Tổng ngân sách</string>
     <string name="total_spent">Tổng đã dùng</string>
@@ -73,4 +73,14 @@
     <string name="create">Tạo</string>
     <string name="cancel">Hủy</string>
     <string name="update">Cập nhật</string>
+    <string name="type">Kiểu giao dịch</string>
+    <string name="categories">Thể loại</string>
+    <string name="light_mode">Chế độ sáng</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="system_default">Mặc định hệ thống</string>
+    <string name="about">Về chúng tôi</string>
+    <string name="languages">Ngôn ngữ</string>
+    <string name="theme">Chủ để</string>
+    <string name="backup">Sao lưu</string>
+    <string name="_import">Nhập</string>
 </resources>

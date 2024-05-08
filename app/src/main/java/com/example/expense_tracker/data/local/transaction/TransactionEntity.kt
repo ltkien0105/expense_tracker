@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
-enum class TransactionType {
-    Income,
-    Expense
+enum class TransactionType(val viText: String) {
+    Income("Thu nhập"),
+    Expense("Chi tiêu");
 }
 
 @Entity(tableName = "transaction_table")

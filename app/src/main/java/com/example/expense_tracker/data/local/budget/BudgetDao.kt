@@ -27,8 +27,8 @@ interface BudgetDao {
     fun getTotalBudget(): Flow<Double>
 
     @Transaction
-    @Query("SELECT * FROM budget_table ")
-    fun getBudgetAndListExpensesTransaction(): Flow<List<BudgetWithTransactions>>
+    @Query("SELECT * FROM budget_table WHERE strftime('%m', start_time) = strftime('%m', 'now')")
+    fun getBudgetAndListExpensesTransactionByMonth(): Flow<List<BudgetWithTransactions>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(budgetEntity: BudgetEntity)

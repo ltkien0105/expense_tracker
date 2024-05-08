@@ -43,7 +43,6 @@ import com.example.expense_tracker.R
 import com.example.expense_tracker.presentation.common.TransactionItem
 import com.example.expense_tracker.presentation.navgraph.Route
 import com.example.expense_tracker.presentation.statistic.component.ChartComponent
-import com.example.expense_tracker.ui.theme.DarkGreen
 import com.example.expense_tracker.ui.theme.Gray
 import com.example.expense_tracker.ui.theme.ReplacementTheme
 
@@ -75,9 +74,12 @@ fun StatisticScreen(
             selectedTabIndex = statisticState.tabSelected,
             containerColor = ReplacementTheme.colorScheme.background,
             contentColor = ReplacementTheme.colorScheme.onBackground,
-            indicator =  @Composable {
+            indicator = @Composable {
                 TabRowDefaults.SecondaryIndicator(
-                    Modifier.tabIndicatorOffset(statisticState.tabSelected, matchContentSize = false),
+                    Modifier.tabIndicatorOffset(
+                        statisticState.tabSelected,
+                        matchContentSize = false
+                    ),
                     color = Color(0xFF8b75bd)
                 )
             },
@@ -126,9 +128,9 @@ fun StatisticScreen(
                         },
                         colors = ButtonDefaults.buttonColors(
                             containerColor =
-                                if (statisticState.rangeSelected == index) DarkGreen else Color.White,
+                            if (statisticState.rangeSelected == index) ReplacementTheme.colorScheme.primary else Color.White,
                             contentColor =
-                                if (statisticState.rangeSelected == index) Color.White else Gray
+                            if (statisticState.rangeSelected == index) Color.White else Gray
                         ),
                         shape = RoundedCornerShape(10.dp)
                     ) {
@@ -177,7 +179,11 @@ fun StatisticScreen(
                         TransactionItem(
                             transactionEntity = it,
                             modifier = Modifier.clickable {
-                                navHostController.navigate(Route.AddEditTransactionScreen.getRoute(it.id))
+                                navHostController.navigate(
+                                    Route.AddEditTransactionScreen.getRoute(
+                                        it.id
+                                    )
+                                )
                             }
                         )
                     }

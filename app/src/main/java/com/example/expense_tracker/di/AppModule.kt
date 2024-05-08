@@ -25,7 +25,7 @@ import com.example.expense_tracker.domain.use_case.add_edit_transaction.GetTrans
 import com.example.expense_tracker.domain.use_case.add_edit_transaction.GetTransactionsOrderedByDate
 import com.example.expense_tracker.domain.use_case.add_edit_transaction.AddEditTransactionUseCases
 import com.example.expense_tracker.domain.use_case.budget.BudgetUseCases
-import com.example.expense_tracker.domain.use_case.budget.GetBudgetAndListExpensesTransaction
+import com.example.expense_tracker.domain.use_case.budget.GetBudgetAndListExpensesTransactionByMonth
 import com.example.expense_tracker.domain.use_case.budget.GetTotalBudget
 import com.example.expense_tracker.domain.use_case.home.GetExpenseTotalAmount
 import com.example.expense_tracker.domain.use_case.home.GetIncomeTotalAmount
@@ -121,7 +121,7 @@ object AppModule {
     ): BudgetUseCases {
         return BudgetUseCases(
             getTotalBudget = GetTotalBudget(budgetRepository),
-            getBudgetAndListExpensesTransaction = GetBudgetAndListExpensesTransaction(budgetRepository)
+            getBudgetAndListExpensesTransactionByMonth = GetBudgetAndListExpensesTransactionByMonth(budgetRepository)
         )
     }
 

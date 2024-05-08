@@ -20,8 +20,8 @@ class OfflineBudgetRepositoryImpl @Inject constructor(
     override fun getTotalBudget(): Flow<Double>
         = budgetDao.getTotalBudget()
 
-    override fun getBudgetAndListExpensesTransaction(): Flow<List<BudgetWithTransactions>>
-        = budgetDao.getBudgetAndListExpensesTransaction()
+    override fun getBudgetAndListExpensesTransactionByMonth(): Flow<List<BudgetWithTransactions>>
+        = budgetDao.getBudgetAndListExpensesTransactionByMonth()
 
     override fun getBudgetInPeriod(startTime: String, endTime: String): Flow<BudgetEntity?>
         = budgetDao.getBudgetInPeriod(startTime, endTime)

@@ -25,8 +25,7 @@ class BudgetViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             launch {
-                budgetUseCases.getTotalBudget().collect {
-                        totalBudget ->
+                budgetUseCases.getTotalBudget().collect { totalBudget ->
                     _budgetState.update {
                         it.copy(
                             totalBudget = totalBudget
@@ -36,37 +35,40 @@ class BudgetViewModel @Inject constructor(
             }
 
             launch {
-                budgetUseCases.getBudgetAndListExpensesTransaction().collect {
-                        budgetAndListExpensesTransaction ->
+                budgetUseCases.getBudgetAndListExpensesTransactionByMonth()
+                    .collect { budgetAndListExpensesTransaction ->
 
-                    var totalSpent = 0.0
-                    val budgetList = budgetAndListExpensesTransaction.map {
-                            budgetWithTransactions ->
-                        val budgetItem = budgetWithTransactions.budget
-                        val totalSpentEachCategory = budgetWithTransactions.transactions.sumOf { it.amount.toDouble() }
-                        totalSpent += totalSpentEachCategory
-                        BudgetItem(
-                            id = budgetItem.id,
-                            category = budgetItem.category,
-                            totalAmount = budgetItem.totalAmount,
-                            leftAmount = budgetItem.totalAmount - totalSpentEachCategory,
-                            startTime = budgetItem.startTime,
-                            endTime = budgetItem.endTime
-                        )
-                    }
+                        var totalSpent = 0.0
+                        val budgetList =
+                            budgetAndListExpensesTransaction.map { budgetWithTransactions ->
+                                val budgetItem = budgetWithTransactions.budget
+                                val totalSpentEachCategory =
+                                    budgetWithTransactions.transactions.sumOf { it.amount.toDouble() }
+                                totalSpent += totalSpentEachCategory
 
-                    if (budgetList.isNotEmpty()) {
-                        val today = LocalDateTime.now().dayOfYear
-                        val dayRemaining = budgetList[0].endTime.dayOfYear - today
-                        _budgetState.update {
-                            it.copy(
-                                budgetList = budgetList,
-                                totalSpent = totalSpent,
-                                dayRemaining = dayRemaining
-                            )
+                                BudgetItem(
+                                    id = budgetItem.id,
+                                    category = budgetItem.category,
+                                    totalAmount = budgetItem.totalAmount,
+                                    leftAmount = budgetItem.totalAmount - totalSpentEachCategory,
+                                    startTime = budgetItem.startTime,
+                                    endTime = budgetItem.endTime
+                                )
+                            }
+
+                        if (budgetList.isNotEmpty()) {
+                            val today = LocalDateTime.now().dayOfYear
+
+                            val dayRemaining = budgetList[0].endTime.dayOfYear - today
+                            _budgetState.update {
+                                it.copy(
+                                    budgetList = budgetList,
+                                    totalSpent = totalSpent,
+                                    dayRemaining = dayRemaining
+                                )
+                            }
                         }
                     }
-                }
             }
         }
     }
